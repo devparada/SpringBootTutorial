@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import tutoSpringBoot.domain.Customer;
@@ -40,6 +41,20 @@ public class CustomerController {
     public Customer postCliente(@RequestBody Customer customer) {
         customers.add(customer);
         return customer;
+    }
+
+    @PutMapping("/clientes")
+    public Customer putCliente(@RequestBody Customer customer) {
+        for (Customer c : customers) {
+            if (c.getID() == customer.getID()) {
+                c.setName(customer.getName());
+                c.setUsername(customer.getUsername());
+                c.setPassword(customer.getPassword());
+
+                return c;
+            }
+        }
+        return null;
     }
 
 }
