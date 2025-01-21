@@ -107,7 +107,7 @@ public class CustomerController {
                 return ResponseEntity.ok("Cliente modificado satisfactoriamente: " + customer.getID());
             }
         }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente con encontrado con el ID: " + customer.getID());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente no encontrado con el ID: " + customer.getID());
     }
 
 }
