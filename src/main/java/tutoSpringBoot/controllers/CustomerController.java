@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -29,58 +31,60 @@ public class CustomerController {
 
     // @RequestMapping(method = RequestMethod.GET)
     @GetMapping
-    public List<Customer> getCustomers() {
-        return customers;
+    public ResponseEntity<List<Customer>> getCustomers() {
+        return ResponseEntity.ok(customers);
     }
 
     // @RequestMapping(value = "/{username}", method = RequestMethod.GET)
     @GetMapping("/{username}")
-    public Customer getCliente(@PathVariable String username) {
+    public ResponseEntity<?> getCliente(@PathVariable String username) {
         for (Customer c : customers) {
             if (c.getUsername().equalsIgnoreCase(username)) {
-                return c;
+                return ResponseEntity.ok(c);
             }
         }
-        return null;
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente no encontrado con username: " + username);
     }
 
     // @RequestMapping(method = RequestMethod.POST)
     @PostMapping
-    public Customer postCliente(@RequestBody Customer customer) {
+    public ResponseEntity<?> postCliente(@RequestBody Customer customer) {
         customers.add(customer);
-        return customer;
+
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body("Cliente creado existosamente: " + customer.getUsername());
     }
 
     // @RequestMapping(method = RequestMethod.PUT)
     @PutMapping
-    public Customer putCliente(@RequestBody Customer customer) {
+    public ResponseEntity<?> putCliente(@RequestBody Customer customer) {
         for (Customer c : customers) {
             if (c.getID() == customer.getID()) {
                 c.setName(customer.getName());
                 c.setUsername(customer.getUsername());
                 c.setPassword(customer.getPassword());
 
-                return c;
+                return ResponseEntity.noContent().build();
             }
         }
-        return null;
+        return ResponseEntity.notFound().build();
     }
 
     // @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     @DeleteMapping("/{id}")
-    public Customer deleteCliente(@PathVariable int id) {
+    public ResponseEntity<?> deleteCliente(@PathVariable int id) {
         for (Customer c : customers) {
             if (c.getID() == id) {
                 customers.remove(c);
-                return c;
+                return ResponseEntity.noContent().build();
             }
         }
-        return null;
+        return ResponseEntity.notFound().build();
     }
 
     // @RequestMapping(method = RequestMethod.PATCH)
     @PatchMapping
-    public Customer patchCliente(@RequestBody Customer customer) {
+    public ResponseEntity<?> patchCliente(@RequestBody Customer customer) {
         for (Customer c : customers) {
             if (c.getID() == customer.getID()) {
                 if (customer.getName() != null) {
@@ -92,10 +96,10 @@ public class CustomerController {
                 if (customer.getPassword() != null) {
                     c.setPassword(customer.getPassword());
                 }
-                return c;
+                return ResponseEntity.ok("Cliente modificado satisfactoriamente: " + customer.getID());
             }
         }
-        return null;
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente con encontrado con el ID: " + customer.getID());
     }
 
 }
