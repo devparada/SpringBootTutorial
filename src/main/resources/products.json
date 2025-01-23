@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Monitor para Gaming",
+    "prize": 349.99,
+    "stock": 12
+  },
+  {
+    "id": 2,
+    "name": "Auriculares Inalámbricos",
+    "prize": 129.99,
+    "stock": 50
+  },
+  {
+    "id": 3,
+    "name": "Teclado Mecánico",
+    "prize": 89.99,
+    "stock": 20
+  },
+  {
+    "id": 4,
+    "name": "SSD Externo",
+    "prize": 149.99,
+    "stock": 35
+  }
+]

@@ -7,6 +7,11 @@ public class Product {
     private Double prize;
     private Integer stock;
 
+    // Constructor vacío para Jackson JSON
+    public Product() {
+        
+    }
+
     public Product(Integer id, String name, Double prize, Integer stock) {
         this.id = id;
         this.name = name;
