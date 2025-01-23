@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 import tutoSpringBoot.domain.Product;
 
-public class ProductServiceImpl {
+public class ProductServiceImpl implements ProductService {
 
     List<Product> products = new ArrayList<>(Arrays.asList(
             new Product(1, "Laptop", 799.99, 10),

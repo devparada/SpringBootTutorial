@@ -3,14 +3,14 @@ package tutoSpringBoot.domain;
 public class Product {
 
     private Integer id;
-    private String nombre;
-    private Double precio;
+    private String name;
+    private Double prize;
     private Integer stock;
 
-    public Product(Integer id, String nombre, Double precio, Integer stock) {
+    public Product(Integer id, String name, Double prize, Integer stock) {
         this.id = id;
-        this.nombre = nombre;
-        this.precio = precio;
+        this.name = name;
+        this.prize = prize;
         this.stock = stock;
     }
 
@@ -22,20 +22,20 @@ public class Product {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getname() {
+        return name;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setname(String name) {
+        this.name = name;
     }
 
-    public Double getPrecio() {
-        return precio;
+    public Double getprize() {
+        return prize;
     }
 
-    public void setPrecio(Double precio) {
-        this.precio = precio;
+    public void setprize(Double prize) {
+        this.prize = prize;
     }
 
     public Integer getStock() {

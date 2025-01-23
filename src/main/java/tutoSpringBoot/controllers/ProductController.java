@@ -9,17 +9,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import tutoSpringBoot.domain.Product;
 import tutoSpringBoot.service.ProductServiceImpl;
+import tutoSpringBoot.service.ProductService;
 
 @RestController
 @RequestMapping("/productos")
 public class ProductController {
-    
-    ProductServiceImpl productsService = new ProductServiceImpl();
+
+    ProductService productsService = new ProductServiceImpl();
 
     @GetMapping
     public ResponseEntity<?> getProducts() {
         List<Product> products = productsService.getProducts();
-        
+
         return ResponseEntity.ok(products);
     }
 
