@@ -3,7 +3,6 @@ package tutoSpringBoot.service;
 import java.io.IOException;
 import java.util.List;
 
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -11,8 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import tutoSpringBoot.domain.Product;
 
-@Primary
-@Service
+@Service("jsonResourceService")
 public class ProductServiceJSONImpl implements ProductService {
 
     @Override

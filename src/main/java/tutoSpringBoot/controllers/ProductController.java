@@ -3,6 +3,7 @@ package tutoSpringBoot.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,8 +16,9 @@ import tutoSpringBoot.service.ProductService;
 @RequestMapping("/productos")
 public class ProductController {
 
-    // Instancia de clase
+    // Inyección de Dependencia
     @Autowired
+    @Qualifier("jsonResourceService")
     private ProductService productsService;
 
     @GetMapping

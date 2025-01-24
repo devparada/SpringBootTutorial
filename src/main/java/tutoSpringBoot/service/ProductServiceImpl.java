@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 import tutoSpringBoot.domain.Product;
 
-@Service
+@Service("listResourceService")
 public class ProductServiceImpl implements ProductService {
 
     List<Product> products = new ArrayList<>(Arrays.asList(
