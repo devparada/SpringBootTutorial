@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import tutoSpringBoot.configurations.ExternalizedConfigurations;
 import tutoSpringBoot.domain.Product;
 import tutoSpringBoot.service.ProductService;
 
@@ -21,8 +22,13 @@ public class ProductController {
     @Lazy
     private ProductService productsService;
 
+    @Autowired
+    private ExternalizedConfigurations externalizedConfigurations;
+
     @GetMapping
     public ResponseEntity<?> getProducts() {
+        System.out.println(externalizedConfigurations.toString());
+
         List<Product> products = productsService.getProducts();
 
         return ResponseEntity.ok(products);
